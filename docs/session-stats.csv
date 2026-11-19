@@ -1,0 +1,7 @@
+session,rows,duration_min,sampling_hz,rocking_samples,rocking_pct,bouts,median_bout_s
+Session01,254455,84.8,50,155938,61.28,50,24.7
+Session05,109078,36.4,50,15131,13.87,11,18.2
+Session06,156757,52.3,50,89243,56.93,30,32.7
+Session07,170538,56.8,50,138523,81.23,33,45.0
+Session12,215285,71.8,50,153213,71.17,75,28.5
+Session13,18646,6.2,50,3097,16.61,2,31.0

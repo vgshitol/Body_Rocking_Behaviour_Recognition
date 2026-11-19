@@ -1,0 +1,4 @@
+baseline,model,n_test,accuracy,precision,recall,f1,roc_auc,majority_baseline,tn,fp,fn,tp
+A_within_Session01_time_split,RandomForest 150 trees (train first 70% of Session01; test last 30%),76277,0.8713,0.8411,0.9653,0.8989,0.9111,0.593,22798,8249,1571,43659
+B_within_Session13_time_split,RandomForest 150 trees (train first 70% of Session13; test last 30%),5535,0.8036,0.8217,0.3529,0.4937,0.9575,0.7286,3918,115,972,530
+C_train_Session01_test_Session13,RandomForest 150 trees (train Session01; test all of Session13),18447,0.8414,0.6552,0.1166,0.1979,0.9079,0.8321,15160,190,2736,361

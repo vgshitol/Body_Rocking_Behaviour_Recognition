@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="430" viewBox="0 0 880 430" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#444"/>
+    </marker>
+  </defs>
+  <rect width="880" height="430" fill="#ffffff"/>
+  <text x="440" y="28" text-anchor="middle" font-size="17" font-weight="bold" fill="#222">Body-rocking detection pipeline</text>
+  <text x="440" y="48" text-anchor="middle" font-size="12" fill="#666">Two wearable IMUs &#8594; 4 s sliding windows &#8594; 84 features &#8594; per-sample classifier</text>
+
+  <!-- sensors -->
+  <g>
+    <rect x="20" y="90" width="170" height="86" rx="8" fill="#eaf2fb" stroke="#4285F4" stroke-width="1.5"/>
+    <text x="105" y="114" text-anchor="middle" font-size="14" font-weight="bold" fill="#222">Wrist IMU</text>
+    <text x="105" y="134" text-anchor="middle" font-size="12" fill="#333">Accel x, y, z</text>
+    <text x="105" y="152" text-anchor="middle" font-size="12" fill="#333">Gyro x, y, z</text>
+    <text x="105" y="169" text-anchor="middle" font-size="11" fill="#666">50 Hz</text>
+  </g>
+  <g>
+    <rect x="20" y="210" width="170" height="86" rx="8" fill="#eaf2fb" stroke="#4285F4" stroke-width="1.5"/>
+    <text x="105" y="234" text-anchor="middle" font-size="14" font-weight="bold" fill="#222">Arm IMU</text>
+    <text x="105" y="254" text-anchor="middle" font-size="12" fill="#333">Accel x, y, z</text>
+    <text x="105" y="272" text-anchor="middle" font-size="12" fill="#333">Gyro x, y, z</text>
+    <text x="105" y="289" text-anchor="middle" font-size="11" fill="#666">50 Hz</text>
+  </g>
+
+  <!-- windowing -->
+  <g>
+    <rect x="250" y="150" width="170" height="86" rx="8" fill="#fef7e0" stroke="#FBBC05" stroke-width="1.5"/>
+    <text x="335" y="174" text-anchor="middle" font-size="14" font-weight="bold" fill="#222">Sliding window</text>
+    <text x="335" y="194" text-anchor="middle" font-size="12" fill="#333">200 samples = 4 s</text>
+    <text x="335" y="212" text-anchor="middle" font-size="12" fill="#333">1-sample stride</text>
+    <text x="335" y="229" text-anchor="middle" font-size="11" fill="#666">one window per sample</text>
+  </g>
+
+  <!-- features -->
+  <g>
+    <rect x="480" y="110" width="190" height="166" rx="8" fill="#e6f4ea" stroke="#34A853" stroke-width="1.5"/>
+    <text x="575" y="134" text-anchor="middle" font-size="14" font-weight="bold" fill="#222">Feature extraction</text>
+    <text x="575" y="154" text-anchor="middle" font-size="12" fill="#333">21 features per stream:</text>
+    <text x="495" y="174" font-size="12" fill="#333">mean (3)</text>
+    <text x="495" y="192" font-size="12" fill="#333">covariance (6)</text>
+    <text x="495" y="210" font-size="12" fill="#333">skewness (3), kurtosis (3)</text>
+    <text x="495" y="228" font-size="12" fill="#333">FFT peak mag (3)</text>
+    <text x="495" y="246" font-size="12" fill="#333">FFT peak freq (3)</text>
+    <text x="575" y="268" text-anchor="middle" font-size="12" font-weight="bold" fill="#222">4 streams &#215; 21 = 84</text>
+  </g>
+
+  <!-- classifier -->
+  <g>
+    <rect x="720" y="150" width="140" height="86" rx="8" fill="#fce8e6" stroke="#EA4335" stroke-width="1.5"/>
+    <text x="790" y="174" text-anchor="middle" font-size="14" font-weight="bold" fill="#222">Classifier</text>
+    <text x="790" y="194" text-anchor="middle" font-size="12" fill="#333">Random Forest /</text>
+    <text x="790" y="212" text-anchor="middle" font-size="12" fill="#333">SVM / MLP (phase 1)</text>
+    <text x="790" y="229" text-anchor="middle" font-size="11" fill="#666">LSTM / CNN-LSTM (phase 2)</text>
+  </g>
+
+  <!-- output -->
+  <g>
+    <rect x="720" y="290" width="140" height="56" rx="8" fill="#f1f3f4" stroke="#5f6368" stroke-width="1.5"/>
+    <text x="790" y="313" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">detection.txt</text>
+    <text x="790" y="331" text-anchor="middle" font-size="12" fill="#333">0 / 1 per sample, 50 Hz</text>
+  </g>
+
+  <!-- labels -->
+  <g>
+    <rect x="250" y="290" width="170" height="56" rx="8" fill="#f1f3f4" stroke="#5f6368" stroke-width="1.5" stroke-dasharray="5,3"/>
+    <text x="335" y="313" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">Annotations</text>
+    <text x="335" y="331" text-anchor="middle" font-size="12" fill="#333">detection.txt (training)</text>
+  </g>
+
+  <!-- arrows -->
+  <line x1="190" y1="133" x2="246" y2="178" stroke="#444" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="190" y1="253" x2="246" y2="208" stroke="#444" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="420" y1="193" x2="476" y2="193" stroke="#444" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="670" y1="193" x2="716" y2="193" stroke="#444" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="790" y1="236" x2="790" y2="286" stroke="#444" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="420" y1="318" x2="716" y2="318" stroke="#888" stroke-width="1.2" stroke-dasharray="5,3" marker-end="url(#arrow)"/>
+  <text x="568" y="308" text-anchor="middle" font-size="11" fill="#666">labels for training / evaluation</text>
+
+  <text x="440" y="392" text-anchor="middle" font-size="12" fill="#666">Sessions: 6 training sessions (924,759 samples, 50 Hz, ~5.1 h total). Sample data: one session (Session01).</text>
+  <text x="440" y="412" text-anchor="middle" font-size="12" fill="#666">Feature code: getAllFeatures.ipynb (Python) and extractFeatures.m (MATLAB), both verified Nov 18, 2026.</text>
+</svg>
